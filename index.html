@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentally Aligned — Free Guides</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E2C47A;
+    --dark: #12100A;
+    --dark-2: #1C1A10;
+    --dark-3: #252018;
+    --terracotta: #A0453A;
+    --terra-light: #C8705F;
+    --cream: #F7F0EB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--dark);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ──────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 10% 90%, rgba(160,69,58,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 90% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .brand {
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+
+  .hero-free-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.25s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(40px, 8vw, 86px);
+    line-height: 1.0;
+    color: var(--cream);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-divider {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+
+  .hero-sub {
+    font-weight: 300;
+    font-size: clamp(14px, 2vw, 17px);
+    line-height: 1.9;
+    color: rgba(247,240,235,0.6);
+    max-width: 540px;
+    margin: 0 auto 56px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.7s forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.85s forwards;
+  }
+
+  .btn-primary {
+    padding: 16px 40px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  .btn-healing { background: var(--terracotta); color: #fff; }
+  .btn-healing:hover { background: var(--terra-light); transform: translateY(-2px); }
+  .btn-shift { background: var(--gold); color: var(--dark); }
+  .btn-shift:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 1.3s forwards;
+  }
+
+  .scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.35);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+    animation: pulse 2s ease infinite;
+  }
+
+  /* ── FREE GUIDE CARDS ──────────────────────────────────── */
+  .guides {
+    padding: 80px 24px 100px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .guides-label {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .guides-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(26px, 4vw, 40px);
+    text-align: center;
+    color: var(--cream);
+    margin-bottom: 60px;
+    line-height: 1.3;
+  }
+
+  .guides-heading em { font-style: italic; color: var(--gold-light); }
+
+  .guide-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .guide-card {
+    border: 1px solid rgba(201,168,76,0.18);
+    background: var(--dark-2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .guide-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+  }
+
+  .guide-card-banner {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guide-card-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+  }
+
+  .banner-healing {
+    background: linear-gradient(135deg, #2d1a16, #4a2820, #1a0e0c);
+  }
+  .banner-healing::before {
+    background: radial-gradient(ellipse at 50% 80%, rgba(160,69,58,0.5) 0%, transparent 70%);
+  }
+
+  .banner-shift {
+    background: linear-gradient(135deg, #1A1508, #252018, #0e0c04);
+  }
+  .banner-shift::before {
+    background: radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.2) 0%, transparent 70%);
+  }
+
+  .banner-free-label {
+    position: relative;
+    z-index: 2;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding: 5px 14px;
+    border: 1px solid;
+    display: inline-block;
+  }
+
+  .banner-healing .banner-free-label { color: var(--terra-light); border-color: rgba(200,112,95,0.5); }
+  .banner-shift .banner-free-label { color: var(--gold); border-color: rgba(201,168,76,0.5); }
+
+  .banner-title {
+    position: relative;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(20px, 2.5vw, 28px);
+    text-align: center;
+    line-height: 1.15;
+  }
+
+  .banner-healing .banner-title { color: #fff; }
+  .banner-shift .banner-title { color: var(--gold-light); }
+
+  .guide-card-body {
+    padding: 36px 36px 40px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .guide-for {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .guide-healing .guide-for { color: rgba(200,112,95,0.8); }
+  .guide-shift .guide-for { color: rgba(201,168,76,0.8); }
+
+  .guide-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(247,240,235,0.6);
+    margin-bottom: 24px;
+    flex: 1;
+  }
+
+  .guide-includes {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  .guide-includes li {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(247,240,235,0.55);
+    padding: 5px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .guide-includes li::before {
+    content: '◆';
+    font-size: 5px;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .guide-healing .guide-includes li::before { color: var(--terra-light); }
+  .guide-shift .guide-includes li::before { color: var(--gold); }
+
+  .btn-download {
+    display: block;
+    text-align: center;
+    padding: 16px 32px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    width: 100%;
+  }
+
+  .btn-download:hover { transform: translateY(-2px); }
+  .btn-download-healing { background: var(--terracotta); color: #fff; }
+  .btn-download-healing:hover { background: var(--terra-light); }
+  .btn-download-shift { background: var(--gold); color: var(--dark); }
+  .btn-download-shift:hover { background: var(--gold-light); }
+
+  .free-note {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(247,240,235,0.25);
+    margin-top: 12px;
+  }
+
+  /* ── HOW IT WORKS ──────────────────────────────────────── */
+  .how {
+    background: var(--dark-3);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .how-inner { max-width: 800px; margin: 0 auto; }
+
+  .how h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(24px, 3.5vw, 36px);
+    color: var(--cream);
+    margin-bottom: 56px;
+  }
+
+  .how h2 em { font-style: italic; color: var(--gold-light); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-style: italic;
+    color: rgba(201,168,76,0.12);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(247,240,235,0.5);
+  }
+
+  /* ── QUOTE ─────────────────────────────────────────────── */
+  .quote-section {
+    padding: 100px 24px;
+    text-align: center;
+  }
+
+  .quote-inner { max-width: 660px; margin: 0 auto; }
+
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 100px;
+    line-height: 0.5;
+    color: rgba(201,168,76,0.1);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 3.5vw, 32px);
+    line-height: 1.6;
+    color: rgba(247,240,235,0.8);
+    margin-bottom: 20px;
+  }
+
+  .quote-attr {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── FOOTER ────────────────────────────────────────────── */
+  footer {
+    background: var(--dark-2);
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+
+  .footer-tagline {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.35);
+    margin-bottom: 28px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(247,240,235,0.3);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 11px; color: rgba(247,240,235,0.15); }
+
+  /* ── ANIMATIONS ────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ────────────────────────────────────────── */
+  @media (max-width: 700px) {
+    .guide-cards { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; gap: 32px; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .btn-primary { width: 100%; max-width: 300px; text-align: center; }
+    .guide-card-body { padding: 28px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ───────────────────────────────────────────────────── -->
+<section class="hero">
+  <span class="brand">Mentally Aligned</span>
+  <div class="hero-free-badge">✦ 100% Free — No Sign-Up Required</div>
+  <h1 class="hero-title">Two free guides.<br><em>One for your heart.<br>One for your mind.</em></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Download your free guide below. Written honestly, with warmth — for anyone who is hurting, overthinking, or simply ready for something to shift.</p>
+  <div class="hero-ctas">
+    <a href="#healing-guide" class="btn-primary btn-healing">Free Healing Guide ↓</a>
+    <a href="#shift-guide" class="btn-primary btn-shift">Free Mindset Guide ↓</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── FREE GUIDE CARDS ────────────────────────────────────────── -->
+<section class="guides">
+  <span class="guides-label">Choose Your Free Guide</span>
+  <h2 class="guides-heading">Pick the one that speaks<br><em>to where you are right now.</em></h2>
+
+  <div class="guide-cards">
+
+    <!-- HEALING GUIDE -->
+    <div class="guide-card guide-healing" id="healing-guide">
+      <div class="guide-card-banner banner-healing">
+        <span class="banner-free-label">Free Guide</span>
+        <div class="banner-title">5 Things to Say to<br>Yourself When<br>You're Hurting</div>
+      </div>
+      <div class="guide-card-body">
+        <p class="guide-for">For anyone walking through grief, anxiety, loneliness or loss.</p>
+        <p class="guide-desc">These are not empty affirmations. They are five honest, gentle phrases you can say to yourself — out loud or quietly in your heart — when you are in the middle of something hard.</p>
+        <ul class="guide-includes">
+          <li>5 powerful phrases for painful moments</li>
+          <li>Short, honest explanations for each one</li>
+          <li>"Say it now" affirmations to use immediately</li>
+          <li>Instant PDF download — read anywhere</li>
+        </ul>
+        <a href="https://drive.google.com/file/d/1YtIiuTG5faMy_iRUd7TeD-WmmnuYF9OK/view?usp=share_link" target="_blank" class="btn-download btn-download-healing">Download Free — It's Yours ↓</a>
+        <p class="free-note">Completely free · No email required</p>
+      </div>
+    </div>
+
+    <!-- SHIFT GUIDE -->
+    <div class="guide-card guide-shift" id="shift-guide">
+      <div class="guide-card-banner banner-shift">
+        <span class="banner-free-label">Free Guide</span>
+        <div class="banner-title">3 Mindset Shifts That<br>Will Change How You<br>See Everything</div>
+      </div>
+      <div class="guide-card-body">
+        <p class="guide-for">For the overthinker who's ready for something different.</p>
+        <p class="guide-desc">You don't need to think more positively. You need to think differently. Three real, honest, quietly powerful ways of seeing yourself and your life — that actually work.</p>
+        <ul class="guide-includes">
+          <li>3 shifts: From shame → curiosity, striving → presence, someday → now</li>
+          <li>Honest explanations — no toxic positivity</li>
+          <li>Reflection prompts for each shift</li>
+          <li>Instant PDF download — read anywhere</li>
+        </ul>
+        <a href="https://drive.google.com/file/d/1lvS9HxFfKWK_gZDYxOKU7J0XVbuu8X_g/view?usp=share_link" target="_blank" class="btn-download btn-download-shift">Download Free — It's Yours ↓</a>
+        <p class="free-note">Completely free · No email required</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ─────────────────────────────────────────────── -->
+<section class="how">
+  <div class="how-inner">
+    <h2>What happens after<br><em>you download?</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">You read your free guide</div>
+        <p class="step-desc">It's short, gentle, and honest. Written for exactly where you are right now.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Something shifts</div>
+        <p class="step-desc">The phrases land. The mindset shifts. You feel something loosen — even slightly.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Go deeper — when ready</div>
+        <p class="step-desc">Inside the guide you'll find the full 14-day or 21-day journey — whenever you're ready for more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUOTE ───────────────────────────────────────────────────── -->
+<section class="quote-section">
+  <div class="quote-inner">
+    <span class="quote-mark">"</span>
+    <blockquote>You don't need to be okay to begin. You only need to show up — exactly as you are.</blockquote>
+    <span class="quote-attr">Mentally Aligned</span>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">Mentally Aligned</div>
+  <div class="footer-tagline">heal · shift · rise</div>
+  <div class="footer-links">
+    <a href="https://payhip.com/b/lux7e" target="_blank">The Healing Journal</a>
+    <a href="https://payhip.com/b/5dVq3" target="_blank">SHIFT 21-Day Guide</a>
+  </div>
+  <p class="footer-copy">© 2025 Mentally Aligned · All rights reserved</p>
+</footer>
+
+</body>
+</html>
