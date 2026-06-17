@@ -459,8 +459,60 @@
     letter-spacing: 5px;
     text-transform: uppercase;
     color: rgba(201,168,76,0.35);
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
+
+  /* ── FOOTER EBOOK CTA CARDS ────────────────────────────── */
+  .footer-ebooks {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .footer-ebook-card {
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 22px 28px;
+    text-align: center;
+    min-width: 210px;
+  }
+
+  .footer-ebook-label {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .footer-ebook-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .btn-footer-ebook {
+    display: inline-block;
+    padding: 10px 24px;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .btn-footer-ebook:hover { transform: translateY(-2px); }
+  .btn-footer-healing { background: var(--terracotta); color: #fff; }
+  .btn-footer-healing:hover { background: var(--terra-light); }
+  .btn-footer-shift { background: var(--gold); color: var(--dark); }
+  .btn-footer-shift:hover { background: var(--gold-light); }
 
   .footer-links {
     display: flex;
@@ -500,6 +552,8 @@
     .hero-ctas { flex-direction: column; align-items: center; }
     .btn-primary { width: 100%; max-width: 300px; text-align: center; }
     .guide-card-body { padding: 28px 24px 32px; }
+    .footer-ebooks { flex-direction: column; align-items: center; }
+    .footer-ebook-card { width: 100%; max-width: 300px; }
   }
 </style>
 </head>
@@ -609,6 +663,21 @@
 <footer>
   <div class="footer-brand">Mentally Aligned</div>
   <div class="footer-tagline">heal · shift · rise</div>
+
+  <!-- EBOOK CTA CARDS -->
+  <div class="footer-ebooks">
+    <div class="footer-ebook-card">
+      <span class="footer-ebook-label">Full 14-Day Journey</span>
+      <span class="footer-ebook-title">The Healing Journal</span>
+      <a href="https://payhip.com/b/lux7e" target="_blank" class="btn-footer-ebook btn-footer-healing">Get the eBook →</a>
+    </div>
+    <div class="footer-ebook-card">
+      <span class="footer-ebook-label">Full 21-Day Journey</span>
+      <span class="footer-ebook-title">SHIFT: Rewire Your Mind</span>
+      <a href="https://payhip.com/b/5dVq3" target="_blank" class="btn-footer-ebook btn-footer-shift">Get the eBook →</a>
+    </div>
+  </div>
+
   <div class="footer-links">
     <a href="https://payhip.com/b/lux7e" target="_blank">The Healing Journal</a>
     <a href="https://payhip.com/b/5dVq3" target="_blank">SHIFT 21-Day Guide</a>
