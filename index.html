@@ -4,9 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="p:domain_verify" content="702aaf106e3b64224b8c88d4271ed6c8">
-<title>Mentally Aligned — Free Guides</title>
+<title>Mentally Aligned — SHIFT: 21-Day Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2640934');
+</script>
+<!-- End MailerLite Universal -->
 <style>
   :root{
     --cream:#f7f3ee;
@@ -15,9 +24,6 @@
     --sage:#7c9e8b;
     --sage-deep:#3a5a46;
     --sage-tint:#eaf2ee;
-    --rose:#c4847a;
-    --rose-deep:#7a3f38;
-    --rose-tint:#fdf1ee;
     --gold:#c9a84c;
   }
   *{box-sizing:border-box;}
@@ -48,7 +54,6 @@
     display:inline-block; text-decoration:none; font-family:'Cinzel',serif;
     font-size:0.75rem; letter-spacing:0.08em; padding:0.9rem 1.3rem; border-radius:2px;
   }
-  .btn-rose{ background:var(--rose); color:#fff; }
   .btn-sage{ background:var(--sage); color:#fff; }
 
   /* SECTION HEADER */
@@ -57,18 +62,16 @@
   h2{ font-weight:500; font-size:1.7rem; margin:0.6rem 0 0; }
   h2 em{ font-style:italic; color:var(--sage-deep); font-family:'Cormorant Garamond',serif; }
 
-  /* CARDS */
+  /* CARD */
   .card{
     background:#fff; border:1px solid #e6e0d6; border-radius:2px;
     padding:2rem 1.6rem; margin:1.2rem 0;
   }
-  .card.rose{ border-top:4px solid var(--rose); }
   .card.sage{ border-top:4px solid var(--sage); }
   .card-tag{
     display:inline-block; font-family:'Cinzel',serif; font-size:0.62rem;
     letter-spacing:0.15em; padding:0.3rem 0.7rem; border-radius:2px; margin-bottom:1rem;
   }
-  .rose .card-tag{ background:var(--rose-tint); color:var(--rose-deep); }
   .sage .card-tag{ background:var(--sage-tint); color:var(--sage-deep); }
   .card h3{
     font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.5rem;
@@ -78,13 +81,30 @@
   .card p{ color:var(--ink-soft); font-size:1rem; }
   .card ul{ padding-left:1.1rem; margin:1rem 0; color:var(--ink-soft); font-size:0.96rem; }
   .card li{ margin-bottom:0.4rem; }
-  .card .dl-btn{
-    display:block; text-align:center; text-decoration:none; font-family:'Cinzel',serif;
-    font-size:0.76rem; letter-spacing:0.1em; padding:0.9rem; border-radius:2px; margin-top:1.2rem;
+
+  /* EMAIL OPT-IN FORM (Kit) */
+  .optin{ margin-top:1.4rem; }
+  .optin input[type="email"]{
+    width:100%; padding:0.85rem 1rem; border:1px solid #d8d0c0; border-radius:2px;
+    font-family:'Cormorant Garamond',serif; font-size:1rem; margin-bottom:0.7rem;
   }
-  .rose .dl-btn{ background:var(--rose); color:#fff; }
-  .sage .dl-btn{ background:var(--sage); color:#fff; }
+  .optin button{
+    display:block; width:100%; text-align:center; text-decoration:none; font-family:'Cinzel',serif;
+    font-size:0.76rem; letter-spacing:0.1em; padding:0.9rem; border-radius:2px; margin-top:0.2rem;
+    background:var(--sage); color:#fff; border:none; cursor:pointer;
+  }
   .card .note{ text-align:center; font-size:0.82rem; color:#9a9a9a; margin-top:0.7rem; }
+
+  /* BRIDGE TO SHIFT */
+  .bridge{
+    margin-top:1.6rem; padding-top:1.4rem; border-top:1px dashed #d8d0c0;
+    text-align:center;
+  }
+  .bridge p{ font-size:0.95rem; font-style:italic; color:var(--ink-soft); margin:0 0 0.9rem; }
+  .bridge a{
+    display:inline-block; background:var(--gold); color:#1c1712; text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.08em; padding:0.75rem 1.3rem; border-radius:2px;
+  }
 
   /* 3-STEP */
   .steps{ padding:2rem 1.4rem; }
@@ -99,7 +119,7 @@
     font-size:1.2rem; color:var(--sage-deep); max-width:520px; margin:0 auto;
   }
 
-  /* EBOOK OFFER */
+  /* SHIFT OFFER */
   .offer-section{ background:var(--ink); color:#f0ece2; padding:2.5rem 1.4rem 2rem; margin-top:2rem; }
   .offer-wordmark{ text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.5rem; color:var(--gold); }
   .offer-tag{ text-align:center; font-size:0.72rem; letter-spacing:0.2em; color:#a89b7d; margin-top:0.3rem; }
@@ -122,19 +142,13 @@
 
 <section class="hero">
   <div class="wordmark">MENTALLY ALIGNED</div>
-  <div class="badge">✦ 100% FREE — NO SIGN-UP REQUIRED</div>
-  <h1>Two free guides.<br><em>One for your heart. One for your mind.</em></h1>
-  <p class="sub">Download your free guide below. Written honestly, with warmth — for anyone who is hurting, overthinking, or simply ready for something to shift.</p>
+  <div class="badge">✦ FREE MINDSET GUIDE</div>
+  <h1>One free guide.<br><em>The first shift starts here.</em></h1>
+  <p class="sub">Enter your email to get your free guide, written honestly, with warmth — for anyone who is overthinking, stuck, or simply ready for something to shift.</p>
   <div class="hero-ctas">
-    <a class="btn btn-sage" href="#shift-guide">FREE MINDSET GUIDE ↓</a>
-    <a class="btn btn-rose" href="#healing-guide">FREE HEALING GUIDE ↓</a>
+    <a class="btn btn-sage" href="#shift-guide">GET THE FREE GUIDE ↓</a>
   </div>
 </section>
-
-<div class="section-head">
-  <div class="eyebrow">CHOOSE YOUR FREE GUIDE</div>
-  <h2>Pick the one that speaks<br><em>to where you are right now.</em></h2>
-</div>
 
 <div class="wrap">
 
@@ -148,72 +162,54 @@
       <li>3 shifts: From shame → curiosity, striving → presence, someday → now</li>
       <li>Honest explanations — no toxic positivity</li>
       <li>Reflection prompts for each shift</li>
-      <li>Instant PDF download — read anywhere</li>
+      <li>Delivered instantly to your inbox</li>
     </ul>
-    <!-- ⚠️ REPLACE THIS with your new Google Drive share link for the updated PDF -->
-    <a class="dl-btn" href="https://drive.google.com/file/d/1UiUI6Ao4-8HATkLxNkU9XAQKUIavGXNH/view?usp=sharing">DOWNLOAD FREE — IT'S YOURS ↓</a>
-    <div class="note">Completely free · No email required</div>
-  </div>
 
-  <!-- HEALING GUIDE CARD -->
-  <div class="card rose" id="healing-guide">
-    <span class="card-tag">FREE GUIDE</span>
-    <h3>5 Things to Say to Yourself When You're Hurting</h3>
-    <p class="for">For anyone walking through grief, anxiety, loneliness or loss.</p>
-    <p>These are not empty affirmations. They are five honest, gentle phrases you can say to yourself — out loud or quietly in your heart — when you are in the middle of something hard.</p>
-    <ul>
-      <li>5 powerful phrases for painful moments</li>
-      <li>Short, honest explanations for each one</li>
-      <li>"Say it now" affirmations to use immediately</li>
-      <li>Instant PDF download — read anywhere</li>
-    </ul>
-    <!-- Unchanged — same Drive link as your live site -->
-    <a class="dl-btn" href="https://drive.google.com/file/d/1ZEY4KBmF4dhcQAJKuh5l7dpL6gEcVHS3/view?usp=sharing">DOWNLOAD FREE — IT'S YOURS ↓</a>
-    <div class="note">Completely free · No email required</div>
+    <!-- MailerLite embedded form: "3 MINDSET SHIFTS" (Lead Mindset group) -->
+    <div class="ml-embedded" data-form="G3aE0U"></div>
+    <div class="note">Free · Delivered by email · Unsubscribe anytime</div>
+
+    <div class="bridge">
+      <p>These 3 shifts are just the beginning. SHIFT walks you through the full rewire — 21 days, one shift at a time.</p>
+      <a href="#shift-offer">GO DEEPER WITH SHIFT →</a>
+    </div>
   </div>
 
 </div>
 
 <div class="steps wrap">
   <div class="section-head" style="padding-top:0;">
-    <h2>What happens after<br><em>you download?</em></h2>
+    <h2>What happens after<br><em>you sign up?</em></h2>
   </div>
   <div class="step">
     <div class="step-num">01</div>
-    <div><h4>You read your free guide</h4><p>It's short, gentle, and honest. Written for exactly where you are right now.</p></div>
+    <div><h4>Your guide lands in your inbox</h4><p>Short, gentle, and honest. Written for exactly where you are right now.</p></div>
   </div>
   <div class="step">
     <div class="step-num">02</div>
-    <div><h4>Something shifts</h4><p>The phrases land. The mindset shifts. You feel something loosen — even slightly.</p></div>
+    <div><h4>Something shifts</h4><p>The shifts land. The mindset moves. You feel something loosen — even slightly.</p></div>
   </div>
   <div class="step">
     <div class="step-num">03</div>
-    <div><h4>Go deeper — when ready</h4><p>Inside the guide you'll find the full 14-day or 21-day journey — whenever you're ready for more.</p></div>
+    <div><h4>Go deeper — when ready</h4><p>A few emails from now, you'll hear about SHIFT — the full 21-day journey, whenever you're ready for more.</p></div>
   </div>
 </div>
 
 <p class="quote">"You don't need to be okay to begin. You only need to show up — exactly as you are."</p>
 
-<div class="offer-section">
+<div class="offer-section" id="shift-offer">
   <div class="offer-wordmark">Mentally Aligned</div>
   <div class="offer-tag">HEAL · SHIFT · RISE</div>
 
   <div class="offer-card">
-    <div class="journey">FULL 21-DAY JOURNEY</div>
-    <h4>SHIFT: Rewire Your Mind</h4>
-    <!-- Kept as-is per your instruction: existing Patreon purchase link -->
-    <a class="ebook-btn" href="https://www.patreon.com/MentallyAligned/posts/shift-21-day-to-162679529">GET THE EBOOK →</a>
-  </div>
-
-  <div class="offer-card">
-    <div class="journey">FULL 14-DAY JOURNEY</div>
-    <h4>The Healing Journal</h4>
-    <a class="ebook-btn" href="https://www.patreon.com/MentallyAligned/posts/healing-journal-162695798">GET THE EBOOK →</a>
+    <div class="journey">THE FULL 21-DAY JOURNEY · $15</div>
+    <h4>SHIFT: Rewire Your Mind Through Positive Thinking</h4>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:0.98rem; color:#c9bfa8; margin:-0.4rem 0 1.2rem;">A daily guide — one shift a day for 21 days — to rewire how you see yourself, your life, and what's possible.</p>
+    <a class="ebook-btn" href="https://whop.com/mentally-aligned/mentally-aligned-53/">GET SHIFT NOW →</a>
   </div>
 
   <div class="offer-links">
-    <a href="https://www.patreon.com/MentallyAligned/posts/shift-21-day-to-162679529">SHIFT 21-Day Guide</a>
-    <a href="https://www.patreon.com/MentallyAligned/posts/healing-journal-162695798">The Healing Journal</a>
+    <a href="https://whop.com/mentally-aligned/mentally-aligned-53/">Get SHIFT: 21-Day Guide</a>
   </div>
 </div>
 
